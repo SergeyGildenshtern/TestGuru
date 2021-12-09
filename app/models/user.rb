@@ -1,5 +1,5 @@
 class User < ApplicationRecord
   def user_tests(level)
-    Result.where(user: id).and(Result.joins(:test).where(tests: { level: level }))
+    Test.where(id: Result.where(user: id).pluck(:test_id), level: level)
   end
 end
