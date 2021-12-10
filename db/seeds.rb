@@ -9,8 +9,8 @@ categories = Category.create!([
 ])
 
 tests = Test.create!([
-  { title: 'HTML', level: 0, category: categories[0], author: users[0] },
-  { title: 'Rails', level: 0, category: categories[1], author: users[0] }
+  { title: 'HTML', level: 0, category: categories[0], user: users[0] },
+  { title: 'Rails', level: 0, category: categories[1], user: users[0] }
 ])
 
 questions = Question.create!([
