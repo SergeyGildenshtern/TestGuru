@@ -20,7 +20,7 @@ questions = Question.create!([
   { text: 'Год выхода Rails?', test: tests[1] }
 ])
 
-answers = Answer.create!([
+Answer.create!([
   { text: 'Язык программирования', correct: false, question: questions[0] },
   { text: 'Язык разметки', correct: true, question: questions[0] },
   { text: 'Фреймворк', correct: false, question: questions[0] },
@@ -42,7 +42,7 @@ answers = Answer.create!([
   { text: '2007', correct: false, question: questions[3] }
 ])
 
-results = Result.create!([
+Result.create!([
   { score: 2, user: users[1], test: tests[0] },
   { score: 1, user: users[1], test: tests[1] }
 ])
