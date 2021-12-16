@@ -9,40 +9,40 @@ categories = Category.create!([
 ])
 
 tests = Test.create!([
-  { title: 'HTML', level: 0, category_id: categories[0].id, author_id: users[0].id },
-  { title: 'Rails', level: 0, category_id: categories[1].id, author_id: users[0].id }
+  { title: 'HTML', level: 0, category: categories[0], author: users[0] },
+  { title: 'Rails', level: 0, category: categories[1], author: users[0] }
 ])
 
 questions = Question.create!([
-  { text: 'Что такое HTML?', test_id: tests[0].id },
-  { text: 'Год выхода HTML?', test_id: tests[0].id },
-  { text: 'Что такое Rails?', test_id: tests[1].id },
-  { text: 'Год выхода Rails?', test_id: tests[1].id }
+  { text: 'Что такое HTML?', test: tests[0] },
+  { text: 'Год выхода HTML?', test: tests[0] },
+  { text: 'Что такое Rails?', test: tests[1] },
+  { text: 'Год выхода Rails?', test: tests[1] }
 ])
 
-answers = Answer.create!([
-  { text: 'Язык программирования', correct: false, question_id: questions[0].id },
-  { text: 'Язык разметки', correct: true, question_id: questions[0].id },
-  { text: 'Фреймворк', correct: false, question_id: questions[0].id },
-  { text: 'Каскадные таблицы стилей', correct: false, question_id: questions[0].id },
+Answer.create!([
+  { text: 'Язык программирования', correct: false, question: questions[0] },
+  { text: 'Язык разметки', correct: true, question: questions[0] },
+  { text: 'Фреймворк', correct: false, question: questions[0] },
+  { text: 'Каскадные таблицы стилей', correct: false, question: questions[0] },
 
-  { text: '1980', correct: false, question_id: questions[1].id },
-  { text: '1990', correct: true, question_id: questions[1].id },
-  { text: '2000', correct: false, question_id: questions[1].id },
-  { text: '2005', correct: false, question_id: questions[1].id },
+  { text: '1980', correct: false, question: questions[1] },
+  { text: '1990', correct: true, question: questions[1] },
+  { text: '2000', correct: false, question: questions[1] },
+  { text: '2005', correct: false, question: questions[1] },
 
-  { text: 'Язык программирования', correct: false, question_id: questions[2].id },
-  { text: 'Язык разметки', correct: false, question_id: questions[2].id },
-  { text: 'Фреймворк', correct: true, question_id: questions[2].id },
-  { text: 'Каскадные таблицы стилей', correct: false, question_id: questions[2].id },
+  { text: 'Язык программирования', correct: false, question: questions[2] },
+  { text: 'Язык разметки', correct: false, question: questions[2] },
+  { text: 'Фреймворк', correct: true, question: questions[2] },
+  { text: 'Каскадные таблицы стилей', correct: false, question: questions[2] },
 
-  { text: '1998', correct: false, question_id: questions[3].id },
-  { text: '2000', correct: false, question_id: questions[3].id },
-  { text: '2004', correct: true, question_id: questions[3].id },
-  { text: '2007', correct: false, question_id: questions[3].id }
+  { text: '1998', correct: false, question: questions[3] },
+  { text: '2000', correct: false, question: questions[3] },
+  { text: '2004', correct: true, question: questions[3] },
+  { text: '2007', correct: false, question: questions[3] }
 ])
 
-results = Result.create!([
-  { score: 2, user_id: users[1].id, test_id: tests[0].id },
-  { score: 1, user_id: users[1].id, test_id: tests[1].id }
+Result.create!([
+  { score: 2, user: users[1], test: tests[0] },
+  { score: 1, user: users[1], test: tests[1] }
 ])
