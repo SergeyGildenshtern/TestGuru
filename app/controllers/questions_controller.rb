@@ -19,11 +19,12 @@ class QuestionsController < ApplicationController
   def create
     question = Question.new(text: params[:text], test: Test.find(params[:test_id]))
     question.save
-    redirect_to test_questions_path
+    redirect_to test_question_path(id: question.id)
   end
 
   def delete
     Question.destroy(@question)
+    redirect_to test_questions_path
   end
 
   private
