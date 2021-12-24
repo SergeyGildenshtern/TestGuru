@@ -19,12 +19,11 @@ class QuestionsController < ApplicationController
 
   def create
     @question = @test.questions.build(question_params)
-    @question.save
 
-    if @question.errors.empty?
+    if @question.save
       redirect_to @question
     else
-      redirect_to new_test_question_path
+      render :new
     end
   end
 
