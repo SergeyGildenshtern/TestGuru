@@ -1,0 +1,36 @@
+<p>
+  <strong>Title: </strong>
+  <%= @test.title %>
+</p>
+
+<p>
+  <strong>Level: </strong>
+  <%= @test.level %>
+</p>
+
+<p>
+  <strong>Category: </strong>
+  <%= @test.category.title %>
+</p>
+
+<p>
+  <strong>Author: </strong>
+  <%= @test.author.name %>
+</p>
+
+<p>
+  <% if @test.questions.any? %>
+    <strong>Questions: </strong>
+    <ul>
+      <% @test.questions.each do |question| %>
+        <li><%= question.text %></li>
+      <% end %>
+    </ul>
+  <% else %>
+    <strong>The test has no questions</strong>
+  <% end %>
+</p>
+
+<%= link_to 'Edit', edit_test_path(@test) %> |
+<%= link_to 'Questions', test_questions_path(@test) %> |
+<%= link_to 'Back', tests_path %>
