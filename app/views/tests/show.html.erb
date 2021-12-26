@@ -19,18 +19,29 @@
 </p>
 
 <p>
+  <p><%= link_to 'New question', new_test_question_path(@test) %></p>
+
   <% if @test.questions.any? %>
-    <strong>Questions: </strong>
-    <ul>
-      <% @test.questions.each do |question| %>
-        <li><%= question.text %></li>
+    <table>
+      <tr>
+        <th>Question</th>
+        <th colspan="3">Actions</th>
+      </tr>
+
+      <% @questions.each do |question| %>
+        <tr>
+          <td><%= question.text %></td>
+          <td><%= link_to 'Show', question_path(question) %></td>
+          <td><%= link_to 'Edit', edit_question_path(question) %></td>
+          <td><%= link_to 'Delete', question_path(question), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        </tr>
       <% end %>
-    </ul>
+
+    </table>
   <% else %>
     <strong>The test has no questions</strong>
   <% end %>
 </p>
 
 <%= link_to 'Edit', edit_test_path(@test) %> |
-<%= link_to 'Questions', test_questions_path(@test) %> |
 <%= link_to 'Back', tests_path %>
