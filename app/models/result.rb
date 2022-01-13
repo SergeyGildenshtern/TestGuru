@@ -3,7 +3,7 @@ class Result < ApplicationRecord
   belongs_to :test
   belongs_to :current_question, class_name: 'Question', optional: true
 
-  before_validation :before_validation_set_first_question, on: :create
+  before_validation :before_validation_set_next_question
 
   PERCENTAGE_PASSING_TEST = 85
 
@@ -13,7 +13,6 @@ class Result < ApplicationRecord
 
   def accept!(answer_ids)
     self.score += 1 if correct_answer?(answer_ids)
-    self.current_question = next_question
     save!
   end
 
@@ -22,14 +21,14 @@ class Result < ApplicationRecord
   end
 
   def percentage_correct_answers
-    self.score * 100 / self.test.questions.count
+    (self.score * 100 / self.test.questions.count.to_f).round(1)
+  end
+
+  def current_question_number
+    test.questions.order(:id).where('id < ?', current_question.id).size + 1
   end
 
   private
-
-  def before_validation_set_first_question
-    self.current_question = test.questions.first if test.present?
-  end
 
   def correct_answer?(answer_ids)
     correct_answers.ids.sort == answer_ids.to_a.map(&:to_i).sort
@@ -40,7 +39,14 @@ class Result < ApplicationRecord
   end
 
   def next_question
-    test.questions.order(:id).where('id > ?', current_question.id).first
+    if self.new_record?
+      test.questions.first
+    else
+      test.questions.order(:id).where('id > ?', current_question.id).first
+    end
   end
 
+  def before_validation_set_next_question
+    self.current_question = next_question
+  end
 end
