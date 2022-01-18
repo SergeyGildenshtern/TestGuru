@@ -6,5 +6,13 @@
 }
 
 .flash.alert {
+  border-color: #ffcc00;
+}
+
+.flash.success {
+  border-color: #33cc33;
+}
+
+.flash.fail {
   border-color: #ef2727;
 }
