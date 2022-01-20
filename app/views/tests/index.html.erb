@@ -14,3 +14,5 @@
 
   <%= render @tests %>
 </table>
+
+<br><%= button_to 'Exit', session_path(session[:user_id]), method: :delete, data: { confirm: 'Are you sure?' } %>
