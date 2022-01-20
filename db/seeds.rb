@@ -1,6 +1,7 @@
 users = User.create!([
-  { name: 'Sergey', email: 'test1@gmail.com', password: '$2a$12$XF5sEZkMJAxb5sk9vy97L.xYUlSQ/xpIMUDqOEh8kzXfEfPMHi4xC', confirmed_at: '2022-01-20 14:54:42.853778213' },
-  { name: 'Alex', email: 'test2@gmail.com', password: '$2a$12$XF5sEZkMJAxb5sk9vy97L.xYUlSQ/xpIMUDqOEh8kzXfEfPMHi4xC', confirmed_at: '2022-01-20 14:54:42.853778213' }
+  { first_name: 'Sergey', last_name: 'Gildenshtern', email: 'test1@gmail.com', password: '123456',
+    confirmed_at: '2022-01-20 14:54:42.853778213', type: 'Admin' },
+  { first_name: 'Alex', email: 'test2@gmail.com', password: '123456', confirmed_at: '2022-01-20 14:54:42.853778213' }
 ])
 
 categories = Category.create!([
