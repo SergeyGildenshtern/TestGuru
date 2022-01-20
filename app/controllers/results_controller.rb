@@ -1,5 +1,4 @@
 class ResultsController < ApplicationController
-
   before_action :find_result, only: %i[show update score]
 
   def show
@@ -9,6 +8,7 @@ class ResultsController < ApplicationController
     @result.accept!(params[:answer_ids])
 
     if @result.completed?
+      TestsMailer.completed_test(@result).deliver_now
       redirect_to score_result_path(@result)
     else
       render :show
@@ -23,5 +23,4 @@ class ResultsController < ApplicationController
   def find_result
     @result = Result.find(params[:id])
   end
-
 end

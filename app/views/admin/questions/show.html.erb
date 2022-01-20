@@ -4,7 +4,7 @@
   <%= @question.text %>
 </p>
 
-<%= link_to 'New answer', new_question_answer_path(@question) %>
+<%= link_to 'New answer', new_admin_question_answer_path(@question) %>
 
 <% if @question.answers.any? %>
   <h2>Answers</h2>
@@ -16,5 +16,5 @@
   <p><b>The question has no answers</b></p>
 <% end %>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', test_path(@question.test) %>
+<%= link_to 'Edit', edit_admin_question_path(@question) %> |
+<%= link_to 'Back', admin_test_path(@question.test) %>
