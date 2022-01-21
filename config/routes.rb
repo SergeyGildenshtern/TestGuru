@@ -16,11 +16,14 @@ Rails.application.routes.draw do
   resources :results, only: %i[show update] do
     member do
       get :score
+      post :gist
     end
   end
 
   namespace :admin do
     root 'tests#index'
+
+    resources :gists, only: :index
 
     resources :tests do
       resources :questions, except: :index, shallow: true do

@@ -1,5 +1,5 @@
 class ResultsController < ApplicationController
-  before_action :find_result, only: %i[show update score]
+  before_action :find_result, only: %i[show update score gist]
 
   def show
   end
@@ -16,6 +16,19 @@ class ResultsController < ApplicationController
   end
 
   def score
+  end
+
+  def gist
+    result = GistQuestionService.new(@result.current_question).call
+
+    if result.html_url
+      @result.current_question.gists.create(url: result.html_url, user: current_user)
+      flash_options = { notice: t('.success', gist_url: result.html_url ) }
+    else
+      flash_options = { alert: t('.failure') }
+    end
+
+    redirect_to @result, flash_options
   end
 
   private
