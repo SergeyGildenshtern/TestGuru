@@ -11,7 +11,7 @@ module TestGuru
     config.load_defaults 6.1
     config.time_zone = 'Krasnoyarsk'
     config.active_record.schema_format = :ruby
-    config.i18n.default_locale = :ru
+    config.i18n.default_locale = :en
     config.i18n.fallbacks = true
   end
 end
