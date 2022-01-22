@@ -18,6 +18,6 @@ module TestGuru
 
     # Allowed tags and attributes
     config.action_view.sanitized_allowed_tags = %w[a]
-    config.action_view.sanitized_allowed_attributes = %w[href]
+    config.action_view.sanitized_allowed_attributes = %w[href target]
   end
 end
