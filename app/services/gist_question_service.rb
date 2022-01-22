@@ -1,11 +1,21 @@
 class GistQuestionService
-  def initialize(question, client: nil)
+  def initialize(question, client = default_client)
     @question = question
-    @client = client || GitHubClient.new
+    @client = client
   end
 
   def call
-    @client.create_gist(gist_params)
+    result = Struct.new(:response) do
+      def success?
+        response.html_url.present?
+      end
+
+      def url
+        response.html_url
+      end
+    end
+
+    result.new @client.create_gist(gist_params)
   end
 
   private
@@ -22,8 +32,10 @@ class GistQuestionService
   end
 
   def gist_content
-    content = [@question.text]
-    content += @question.answers.pluck(:text)
-    content.join("\n")
+    [@question.text, *@question.answers.pluck(:text)].join("\n")
+  end
+
+  def default_client
+    GitHubClient.new
   end
 end

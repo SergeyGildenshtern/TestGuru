@@ -14,8 +14,4 @@ module ApplicationHelper
   def gist_hash(gist)
     gist.url.split('/')[-1]
   end
-
-  def slice_question(question)
-    question.text[0, 25]
-  end
 end

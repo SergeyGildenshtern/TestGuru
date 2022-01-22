@@ -153,6 +153,6 @@ ru:
         other: "%{resource}: сохранение не удалось из-за %{count} ошибки:"
   results:
     gist:
-      success: "Gist успешно сохранён: %{gist_url}"
+      success: "Gist успешно сохранён: %{gist_link}"
       failure: "Во время сохранения gist произошла ошибка"
       description: "Вопрос о %{test_title} от TestGuru"

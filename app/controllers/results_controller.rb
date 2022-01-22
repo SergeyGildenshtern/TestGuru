@@ -21,14 +21,14 @@ class ResultsController < ApplicationController
   def gist
     result = GistQuestionService.new(@result.current_question).call
 
-    if result.html_url
-      @result.current_question.gists.create(url: result.html_url, user: current_user)
-      flash_options = { notice: t('.success', gist_url: result.html_url ) }
+    if result.success?
+      @result.current_question.gists.create(url: result.url, user: current_user)
+      flash[:notice] = t('.success', gist_link: helpers.link_to(result.url, result.url, target: '_blank'))
     else
-      flash_options = { alert: t('.failure') }
+      flash[:alert] = t('.failure')
     end
 
-    redirect_to @result, flash_options
+    redirect_to @result
   end
 
   private
