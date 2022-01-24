@@ -13,5 +13,11 @@ module TestGuru
     config.active_record.schema_format = :ruby
     config.i18n.default_locale = :en
     config.i18n.fallbacks = true
+
+    config.autoload_paths << "#{Rails.root}/lib/clients"
+
+    # Allowed tags and attributes
+    config.action_view.sanitized_allowed_tags = %w[a]
+    config.action_view.sanitized_allowed_attributes = %w[href target]
   end
 end

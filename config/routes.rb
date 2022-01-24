@@ -22,6 +22,8 @@ Rails.application.routes.draw do
   namespace :admin do
     root 'tests#index'
 
+    resources :gists, only: %i[index create]
+
     resources :tests do
       resources :questions, except: :index, shallow: true do
         resources :answers, except: :index, shallow: true

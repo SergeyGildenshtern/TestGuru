@@ -145,3 +145,9 @@ en:
       not_saved:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
+  admin:
+    gists:
+      create:
+        success: "Gist saved successfully: %{gist_link}"
+        failure: "An error occurred while saving gist"
+      description: "A question about %{test_title} from TestGuru"

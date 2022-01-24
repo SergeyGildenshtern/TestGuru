@@ -4,9 +4,9 @@
   <small><%= test_progress @result %></small>
 </p>
 
-<b>
-  <%= @result.current_question.text %>
-</b>
+<p>
+  <b><%= @result.current_question.text %></b>
+</p>
 
 <%= form_with url: result_path(@result), local: true, method: :put do |form| %>
   <%= form.collection_check_boxes :answer_ids, @result.current_question.answers, :id, :text, include_hidden: false do |b| %>
@@ -16,5 +16,6 @@
     </p>
   <% end %>
 
+  <p><%= link_to 'Add Question to Gist', admin_gists_path, method: :post %></p>
   <p><%= form.submit 'Next' %></p>
 <% end %>
