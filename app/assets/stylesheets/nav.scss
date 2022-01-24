@@ -1,5 +1,10 @@
-.nav.user {
-  text-align: right;
+.nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav.nav-user {
+  width: fit-content;
 }
 
 .nav.user-email {
@@ -7,15 +12,15 @@
 }
 
 .nav.nav-admin {
-  height: 35px;
   padding: 15px;
   line-height: 35px;
   color: #fff;
   background-color: #4293e6;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .nav-admin.title {
+  margin-right: auto;
   font-size: 140%;
   font-weight: bold;
 }
