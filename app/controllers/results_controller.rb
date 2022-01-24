@@ -1,5 +1,5 @@
 class ResultsController < ApplicationController
-  before_action :find_result, only: %i[show update score gist]
+  before_action :find_result, only: %i[show update score]
 
   def show
   end
