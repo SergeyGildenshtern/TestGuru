@@ -35,7 +35,7 @@ class Admin::QuestionsController < Admin::BaseController
 
   def destroy
     @question.destroy
-    redirect_to test_path(@question.test)
+    redirect_to [:admin, @question.test]
   end
 
   private
@@ -55,5 +55,4 @@ class Admin::QuestionsController < Admin::BaseController
   def rescue_with_question_not_found
     render plain: 'Question was not found!'
   end
-
 end
