@@ -1,2 +1,2 @@
 export * from './sorting';
-export * from './validation';
+export * from './password_validation';
