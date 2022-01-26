@@ -1,5 +1,12 @@
 <h1>Passing the <%= @result.test.title %> Test</h1>
 
+<div class="progress">
+  <%= content_tag :div,
+                  nil,
+                  class: 'progress-bar',
+                  data: { progress: 100 * (@result.current_question_number - 1)  / @result.test.questions.count } %>
+</div>
+
 <p>
   <small><%= test_progress @result %></small>
 </p>

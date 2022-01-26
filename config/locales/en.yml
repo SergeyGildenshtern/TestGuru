@@ -146,6 +146,9 @@ en:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
   admin:
+    tests:
+      form_inline:
+        submit: 'OK'
     gists:
       create:
         success: "Gist saved successfully: %{gist_link}"

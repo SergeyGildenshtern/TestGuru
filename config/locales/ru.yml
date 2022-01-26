@@ -152,6 +152,9 @@ ru:
         one: "%{resource}: сохранение не удалось из-за %{count} ошибки:"
         other: "%{resource}: сохранение не удалось из-за %{count} ошибки:"
   admin:
+    tests:
+      form_inline:
+        submit: 'ОК'
     gists:
       create:
         success: "Gist успешно сохранён: %{gist_link}"

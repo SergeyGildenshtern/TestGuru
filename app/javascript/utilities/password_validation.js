@@ -1,11 +1,11 @@
 document.addEventListener('turbolinks:load', function () {
     const control = document.querySelector('.password-validation')
-    const password = control.querySelector('#user_password')
-    const passwordConfirmation = control.querySelector('#user_password_confirmation')
+    const password = document.querySelector('#user_password')
+    const passwordConfirmation = document.querySelector('#user_password_confirmation')
 
-    let submitButton = control.parentNode.querySelector('input[type="submit"]')
-    let matchIcon = control.querySelector('.octicon-check')
-    let mismatchIcon = control.querySelector('.octicon-x')
+    let submitButton = document.querySelector('input[type="submit"]')
+    let matchIcon = document.querySelector('.octicon-check')
+    let mismatchIcon = document.querySelector('.octicon-x')
 
     if (control) {
         submitButton.disabled = true
