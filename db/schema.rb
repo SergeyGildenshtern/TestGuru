@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_21_180652) do
+ActiveRecord::Schema.define(version: 2022_01_27_121654) do
 
   create_table "answers", force: :cascade do |t|
     t.text "text", null: false
@@ -19,6 +19,25 @@ ActiveRecord::Schema.define(version: 2022_01_21_180652) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["question_id"], name: "index_answers_on_question_id"
+  end
+
+  create_table "badges", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "description", null: false
+    t.string "image_url", null: false
+    t.string "badge_type", null: false
+    t.string "addition"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "badges_users", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "badge_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["badge_id"], name: "index_badges_users_on_badge_id"
+    t.index ["user_id"], name: "index_badges_users_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|

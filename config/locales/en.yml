@@ -146,6 +146,12 @@ en:
         one: '1 error prohibited this %{resource} from being saved:'
         other: "%{count} errors prohibited this %{resource} from being saved:"
   admin:
+    badges:
+      new: 'You have a new badge!'
+      types:
+        first_attempt: 'Successful test from the first time'
+        all_category: 'Successful completion of all tests of a certain category'
+        all_level: 'Successful completion of all tests of a certain level'
     tests:
       form_inline:
         submit: 'OK'

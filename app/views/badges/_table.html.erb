@@ -1,0 +1,13 @@
+<table class="table">
+  <tr>
+    <th class="sort-by-title pointer">
+      Title
+      <%= octicon 'arrow-up', class: 'text-success hide' %>
+      <%= octicon 'arrow-down', class: 'text-success hide' %>
+    </th>
+    <th>Description</th>
+    <th>Image</th>
+  </tr>
+
+  <%= render resource, template: 'badge' %>
+</table>

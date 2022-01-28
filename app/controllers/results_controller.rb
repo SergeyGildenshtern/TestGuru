@@ -9,6 +9,8 @@ class ResultsController < ApplicationController
 
     if @result.completed?
       TestsMailer.completed_test(@result).deliver_now
+      assigning_badges
+
       redirect_to score_result_path(@result)
     else
       render :show
@@ -22,5 +24,14 @@ class ResultsController < ApplicationController
 
   def find_result
     @result = Result.find(params[:id])
+  end
+
+  def assigning_badges
+    result = BadgeService.new(@result).call
+
+    if result.any_badges?
+      result.badges.each { |badge| current_user.badges << badge }
+      flash[:notice] = I18n.t('.admin.badges.new')
+    end
   end
 end

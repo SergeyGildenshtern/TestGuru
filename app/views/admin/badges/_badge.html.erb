@@ -1,0 +1,10 @@
+<tr>
+  <td><%= badge.title %></td>
+  <td><%= badge.description %></td>
+  <td><%= content_tag :img, nil, src: badge.image_url, class: 'badge' %></td>
+  <td><%= link_to badge.image_url, badge.image_url, { target: '_blank' } %></td>
+  <td><%= I18n.t(".admin.badges.types.#{badge.badge_type}") %></td>
+  <td><%= link_to 'Show', admin_badge_path(badge) %></td>
+  <td><%= link_to 'Edit', edit_admin_badge_path(badge) %></td>
+  <td><%= link_to 'Delete', admin_badge_path(badge), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+</tr>

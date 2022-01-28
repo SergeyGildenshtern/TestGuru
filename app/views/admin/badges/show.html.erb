@@ -1,0 +1,34 @@
+<p>
+  <b>Title: </b>
+  <%= @badge.title %>
+</p>
+
+<p>
+  <b>Description: </b>
+  <%= @badge.description %>
+</p>
+
+<p>
+  <b>Image: </b>
+  <%= content_tag :img, nil, src: @badge.image_url, class: 'badge' %>
+</p>
+
+<p>
+  <b>Image URL: </b>
+  <%= link_to @badge.image_url, @badge.image_url %>
+</p>
+
+<p>
+  <b>Type: </b>
+  <%= I18n.t(".admin.badges.types.#{@badge.badge_type}") %>
+</p>
+
+<% if @badge.type_with_addition? %>
+  <p>
+    <b>Addition: </b>
+    <%= @badge.addition %>
+  </p>
+<% end %>
+
+<%= link_to 'Edit', edit_admin_badge_path(@badge) %> |
+<%= link_to 'Back', admin_badges_path %>

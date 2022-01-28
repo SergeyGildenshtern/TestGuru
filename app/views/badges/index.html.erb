@@ -1,0 +1,17 @@
+<h1>Your Badges</h1>
+
+<% if @badges.present? %>
+  <%= render 'table', resource: @badges %>
+<% else %>
+  <h5>You don't have Badges</h5>
+<% end %>
+
+<h1>Remaining Badges</h1>
+
+<% if @remaining_badges.present? %>
+  <%= render 'table', resource: @remaining_badges %>
+<% else %>
+  <h5>No Badges</h5>
+<% end %>
+
+<%= link_to 'Back', tests_path %>
