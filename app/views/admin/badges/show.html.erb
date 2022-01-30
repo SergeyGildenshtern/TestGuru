@@ -23,7 +23,7 @@
   <%= I18n.t(".admin.badges.types.#{@badge.badge_type}") %>
 </p>
 
-<% if @badge.type_with_addition? %>
+<% unless @badge.first_attempt? %>
   <p>
     <b>Addition: </b>
     <%= @badge.addition %>

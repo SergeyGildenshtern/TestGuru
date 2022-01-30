@@ -9,13 +9,12 @@ document.addEventListener('turbolinks:load', function () {
 
     function ChangeForm() {
         switch (badgeType.value) {
-            case 'all_category':
-            case 'all_level':
-                console.log('abob')
-                inputAddition.classList.remove('hide')
+            case '':
+            case 'first_attempt':
+                inputAddition.classList.add('hide')
                 break
             default:
-                inputAddition.classList.add('hide')
+                inputAddition.classList.remove('hide')
         }
     }
 })

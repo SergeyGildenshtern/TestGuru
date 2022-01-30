@@ -1,14 +1,11 @@
 class Badge < ApplicationRecord
-  has_and_belongs_to_many :users
+  enum badge_type: %i[first_attempt all_category all_level]
+
+  has_many :badges_users, dependent: :destroy
+  has_many :users, through: :badges_users
 
   validates :title, :description, :image_url, :badge_type, presence: true
-  validates :addition, presence: true, if: :type_with_addition?
+  validates :addition, presence: true, unless: :first_attempt?
 
   scope :remaining_badges, ->(user) { where.not(id: user.badges.ids) }
-
-  TYPES = %i[first_attempt all_category all_level].freeze
-
-  def type_with_addition?
-    badge_type != 'first_attempt'
-  end
 end

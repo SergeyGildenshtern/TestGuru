@@ -8,29 +8,33 @@ class BadgeService
   end
 
   def call
-    badges = Badge.where('addition = ? OR addition = ? OR badge_type = "first_attempt"', @test.category.title, @test.level)
-                  .select { |b| send("#{b.badge_type}?".to_s) }
+    badges = Badge.all.select { |b| send("#{b.badge_type}?".to_s, b) }
 
     Result.new badges, badges.present?
   end
 
   private
 
-  def first_attempt?
+  def first_attempt?(badge)
     @result.score == @test.questions.count && @user.results.count { |r| r.test == @test } == 1
   end
 
-  def all_category?
-    category = @test.category
-    unique_successful_results.count { |r| r.test.category == category } == category.tests.count
+  def all_category?(badge)
+    unique_successful_results(badge)
+      .count { |r| r.test.category.title == badge.addition } == @test.category.tests.count
   end
 
-  def all_level?
-    level = @test.level
-    unique_successful_results.count { |r| r.test.level == level } == Test.where(level: level).count
+  def all_level?(badge)
+    unique_successful_results(badge)
+      .count { |r| r.test.level == badge.addition.to_i } == Test.where(level: @test.level).count
   end
 
-  def unique_successful_results
-    @user.results.select(&:successfully?).uniq(&:test)
+  def unique_successful_results(badge)
+    if badge.first_attempt? || !@user.badges.include?(badge)
+      @user.results.select(&:successfully?).uniq(&:test)
+    else
+      last_badge_date = @user.badges_users.where(badge_id: badge.id).last.created_at
+      @user.results.select { |r| r.successfully? && r.created_at > last_badge_date }.uniq(&:test)
+    end
   end
 end

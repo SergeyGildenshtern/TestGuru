@@ -21,7 +21,7 @@
     <p>
       <%= form.label :badge_type %>
       <br>
-      <%= form.select :badge_type, Badge::TYPES.map { |el| [ I18n.t(".admin.badges.types.#{el.to_s}"), el ] }, prompt: true %>
+      <%= form.select :badge_type, Badge.badge_types.map { |t| [ I18n.t(".admin.badges.types.#{t[0]}"), t[0] ] }, prompt: true %>
     </p>
     <p class="input-addition hide">
       <%= form.label :addition %>

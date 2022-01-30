@@ -25,15 +25,16 @@ ActiveRecord::Schema.define(version: 2022_01_27_121654) do
     t.string "title", null: false
     t.string "description", null: false
     t.string "image_url", null: false
-    t.string "badge_type", null: false
+    t.integer "badge_type", null: false
     t.string "addition"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["badge_type"], name: "index_badges_on_badge_type"
   end
 
   create_table "badges_users", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "badge_id"
+    t.integer "user_id", null: false
+    t.integer "badge_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["badge_id"], name: "index_badges_users_on_badge_id"
@@ -115,6 +116,8 @@ ActiveRecord::Schema.define(version: 2022_01_27_121654) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "badges_users", "badges"
+  add_foreign_key "badges_users", "users"
   add_foreign_key "gists", "questions"
   add_foreign_key "gists", "users"
   add_foreign_key "questions", "tests"

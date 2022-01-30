@@ -30,7 +30,7 @@ class ResultsController < ApplicationController
     result = BadgeService.new(@result).call
 
     if result.any_badges?
-      result.badges.each { |badge| current_user.badges << badge }
+      result.badges.each { |badge| current_user.badges_users.create(badge_id: badge.id) }
       flash[:notice] = I18n.t('.admin.badges.new')
     end
   end
