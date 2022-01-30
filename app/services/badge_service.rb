@@ -30,7 +30,7 @@ class BadgeService
   end
 
   def unique_successful_results(badge)
-    if badge.first_attempt? || !@user.badges.include?(badge)
+    if !@user.badges.include?(badge)
       @user.results.select(&:successfully?).uniq(&:test)
     else
       last_badge_date = @user.badges_users.where(badge_id: badge.id).last.created_at
