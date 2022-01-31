@@ -13,11 +13,8 @@ class Result < ApplicationRecord
 
   def accept!(answer_ids)
     self.score += 1 if correct_answer?(answer_ids)
+    update_success
     save!
-  end
-
-  def successfully?
-    percentage_correct_answers >= PERCENTAGE_PASSING_TEST
   end
 
   def percentage_correct_answers
@@ -26,6 +23,10 @@ class Result < ApplicationRecord
 
   def current_question_number
     test.questions.order(:id).where('id < ?', current_question.id).size + 1
+  end
+
+  def update_success
+    self.successfully = true if percentage_correct_answers >= PERCENTAGE_PASSING_TEST
   end
 
   private
@@ -39,7 +40,7 @@ class Result < ApplicationRecord
   end
 
   def next_question
-    if self.new_record?
+    if new_record?
       test.questions.first
     else
       test.questions.order(:id).where('id > ?', current_question.id).first
