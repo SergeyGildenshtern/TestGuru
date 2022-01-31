@@ -1,6 +1,6 @@
 <h1>The <%= @result.test.title %> Test was Completed!</h1>
 
-<% if @result.successfully? %>
+<% if @result.successfully %>
   <p>
     <span style="color: green"><%= @result.percentage_correct_answers %>%</span> correct answers.
     You have successfully passed the test!

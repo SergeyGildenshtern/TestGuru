@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :results, dependent: :destroy
   has_many :tests, through: :results
   has_many :gists, dependent: :destroy
+  has_many :badges_users, dependent: :destroy
+  has_many :badges, through: :badges_users
 
   validates :first_name, presence: true
   validates :email, presence: true,

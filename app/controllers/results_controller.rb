@@ -9,6 +9,7 @@ class ResultsController < ApplicationController
 
     if @result.completed?
       TestsMailer.completed_test(@result).deliver_now
+      BadgeService.new(@result).call
       redirect_to score_result_path(@result)
     else
       render :show

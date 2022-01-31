@@ -44,6 +44,6 @@ Answer.create!([
 ])
 
 Result.create!([
-  { score: 2, user: users[1], test: tests[0] },
+  { score: 2, successfully: true, user: users[1], test: tests[0] },
   { score: 1, user: users[1], test: tests[1] }
 ])

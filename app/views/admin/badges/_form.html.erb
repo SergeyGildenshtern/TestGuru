@@ -1,0 +1,37 @@
+<%= form_with model: [:admin, @badge], local: true do |form| %>
+  <%= render 'shared/errors', resource: @badge %>
+
+  <p>
+    <%= form.label :title %>
+    <br>
+    <%= form.text_field :title, id: :badge_title %>
+  </p>
+  <p>
+    <%= form.label :description %>
+    <br>
+    <%= form.text_field :description, id: :badge_description %>
+  </p>
+  <p>
+    <%= form.label :image_url %>
+    <br>
+    <%= form.text_field :image_url, id: :badge_image_url %>
+  </p>
+
+  <div class="select-type-of-badge">
+    <p>
+      <%= form.label :badge_type %>
+      <br>
+      <%= form.select :badge_type, Badge.badge_types.map { |t| [ I18n.t(".admin.badges.types.#{t[0]}"), t[0] ] }, prompt: true %>
+    </p>
+    <p class="input-addition hide">
+      <%= form.label :addition %>
+      <br>
+      <%= form.text_field :addition, id: :badge_addition %>
+    </p>
+  </div>
+
+  <p>
+    <%= form.submit %>
+  </p>
+
+<% end %>

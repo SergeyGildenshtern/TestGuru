@@ -19,9 +19,12 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :badges, only: :index
+
   namespace :admin do
     root 'tests#index'
 
+    resources :badges
     resources :gists, only: %i[index create]
 
     resources :tests do
