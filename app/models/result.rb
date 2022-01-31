@@ -26,7 +26,7 @@ class Result < ApplicationRecord
   end
 
   def update_success
-    self.successfully = true if percentage_correct_answers >= PERCENTAGE_PASSING_TEST
+    self.successfully = percentage_correct_answers >= PERCENTAGE_PASSING_TEST
   end
 
   private
