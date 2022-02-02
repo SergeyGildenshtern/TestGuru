@@ -11,6 +11,13 @@
   <small><%= test_progress @result %></small>
 </p>
 
+<% if @result.test.time.present? %>
+  <%= content_tag :p,
+                  "Оставшееся время: #{@result.remaining_time}",
+                  class: 'timer',
+                  data: { remaining_time: @result.remaining_time } %>
+<% end %>
+
 <p>
   <b><%= @result.current_question.text %></b>
 </p>

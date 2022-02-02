@@ -160,3 +160,5 @@ en:
         success: "Gist saved successfully: %{gist_link}"
         failure: "An error occurred while saving gist"
       description: "A question about %{test_title} from TestGuru"
+  tests:
+    no_time: "Unlimited"

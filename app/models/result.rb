@@ -8,7 +8,7 @@ class Result < ApplicationRecord
   PERCENTAGE_PASSING_TEST = 85
 
   def completed?
-    current_question.nil?
+    current_question.nil? || (remaining_time <= 0 if test.time.present?)
   end
 
   def accept!(answer_ids)
@@ -27,6 +27,10 @@ class Result < ApplicationRecord
 
   def update_success
     self.successfully = percentage_correct_answers >= PERCENTAGE_PASSING_TEST
+  end
+
+  def remaining_time
+    (created_at.to_i + test.time * 60) - Time.current.to_i
   end
 
   private
